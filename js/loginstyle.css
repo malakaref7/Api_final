@@ -1,0 +1,168 @@
+sbody, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+footer {
+  position: fixed;
+  left: 350px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #555;
+  font-size: 12px;
+  background: transparent;
+  padding: 10px 0;
+}
+
+/* Left side */
+.left-panel {
+  flex: 45%;
+  background-color: #0c69a2;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.left-content .illustration {
+  max-width: 300px;
+  margin-bottom: 30px;
+}
+
+.left-content h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color:rgb(244, 188, 47);
+}
+
+.left-content p {
+  font-size: 14px;
+}
+
+/* Right side */
+.right-panel {
+  flex:55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+.logo {
+  position: absolute;
+  top: 30px;
+  left: 750px;
+  width: 120px;
+  margin: 0;
+  z-index: 100;
+}
+
+
+.login-box h2 {
+  color: #0c69a2;
+  margin: 0 0 10px;
+  font-size: 40px;
+}
+
+.login-box p {
+  margin-bottom: 60px;
+  color: #555;
+  font-size: 12px;
+}
+
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.options {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+#togglePass {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  font-size: 13px;
+  color: #0c69a2;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #f3faff;
+  transition: background 0.2s, color 0.2s;
+  user-select: none;
+}
+
+#togglePass:hover {
+  background: #e0f0ff;
+  color: #1976d2;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #0c69a2;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #6bbef6;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.input-title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+
+.register-link {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 13px;
+  color: #333;
+}
+
+.register-link a {
+  color: rgb(244, 188, 47);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.register-link a:hover {
+  color: rgb(243, 221, 166);
+}
