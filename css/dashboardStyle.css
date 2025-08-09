@@ -172,6 +172,38 @@ body {
   padding: 20px;
 }
 
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+/* Specific colors per status */
+.status-badge.scheduled {
+  background-color: #0c69a2; /* blue */
+}
+.status-badge.published {
+  background-color: #4caf50; /* green */
+}
+.status-badge.draft {
+  background-color: #ff9800; /* orange */
+}
+.status-badge.archived {
+  background-color: #9e9e9e; /* gray */
+}
+
+/* Dates below the badge */
+.status-dates {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.3;
+}
+
 .tabs {
   display: flex;
   gap: 24px;
@@ -257,6 +289,11 @@ table th, table td {
   font-size: 13px;
 }
 
+table td:last-child {
+  vertical-align: middle;
+  padding: 0; /* optional, to remove extra space */
+}
+
 table th {
   background: #f0f0f0;
 }
@@ -273,3 +310,53 @@ footer {
   background: #fff;
   padding: 5px 0;
 }
+
+.actions {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  height: 100%; 
+  width: 20%;
+  padding: 10px 0; /* keeps spacing inside */
+  box-sizing: border-box;
+}
+.actions img {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.actions img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.pagination {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 12px;
+  transition: background 0.2s ease;
+}
+
+.pagination button.active {
+  background: #0071BC;
+  color: white;
+}
+
+.pagination button:hover {
+  background: #ccc;
+}
+
