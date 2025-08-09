@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("username").textContent = username ?? "Guest";
 
   let allSurveys = [];
+  let filteredSurveys = [];
+  const rowsPerPage = 5;
+  let currentPage = 1;
 
   // Fetch and store all surveys
   fetch("https://localhost:44363/API/Survey/GetAll")
@@ -11,9 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(data => {
       if (data && data.Result && Array.isArray(data.Result)) {
         allSurveys = data.Result;
-        renderSurveys(allSurveys); // Render all on load
+        filteredSurveys = [...allSurveys];
+        renderSurveys();
+        renderPagination();
       } else {
-        renderSurveys([]); // Empty fallback
+        renderSurveys([]);
       }
     })
     .catch(error => {
@@ -30,18 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
       tab.classList.add("active");
 
       const filter = tab.textContent.trim();
+      currentPage = 1; // Reset to first page
 
       if (filter === "All") {
-        renderSurveys(allSurveys);
+        filteredSurveys = [...allSurveys];
       } else {
-        const filtered = allSurveys.filter(survey =>
+        filteredSurveys = allSurveys.filter(survey =>
           survey.Status.toLowerCase() === filter.toLowerCase()
         );
-        renderSurveys(filtered);
       }
+
+      renderSurveys();
+      renderPagination();
     });
   });
 
+  // Logout
   const logoutDiv = document.querySelector(".logout");
   if (logoutDiv) {
     logoutDiv.addEventListener("click", () => {
@@ -49,33 +58,70 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.href = "index.html";
     });
   }
-});
 
-// Render table function
-function renderSurveys(surveys) {
-  const tableBody = document.getElementById("surveyTableBody");
-  tableBody.innerHTML = "";
+  // Render table with pagination
+  function renderSurveys() {
+    const tableBody = document.getElementById("surveyTableBody");
+    tableBody.innerHTML = "";
 
-  if (!surveys.length) {
-    tableBody.innerHTML = "<tr><td colspan='6'>No surveys found.</td></tr>";
-    return;
+    if (!filteredSurveys.length) {
+      tableBody.innerHTML = "<tr><td colspan='6'>No surveys found.</td></tr>";
+      return;
+    }
+
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const paginated = filteredSurveys.slice(start, end);
+
+    paginated.forEach(survey => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${survey.Title}</td>
+        <td>
+          <div class="status-badge ${survey.Status.toLowerCase()}">${survey.Status}</div>
+          <div class="status-dates">
+            Expires at ${survey.ExpiryDate ? survey.ExpiryDate : "N/A"}<br>
+            Publish at ${survey.PublishDate ? survey.PublishDate : "N/A"}
+          </div>
+        </td>
+        <td>${survey.CreatedByUserName}</td>
+        <td>${survey.ModifiedByUserName}</td>
+        <td>${survey.Type}</td>
+        <td>${survey.Language}</td>
+        <td>${survey.Responses}</td>
+        <td class="actions">
+          <img src="images/download.png" title="Download">
+          <img src="images/upload.png" title="Upload">
+          <img src="images/view.png" title="View">
+          <img src="images/edit.png" title="Edit">
+          <img src="images/copy.png" title="Duplicate">
+          <img src="images/delete.png" title="Delete">
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
   }
 
-  surveys.forEach(survey => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td>${survey.Title}</td>
-      <td>${survey.Status}</td>
-      <td>${survey.CreatedByUserName}</td>
-      <td>${survey.ModifiedByUserName}</td>
-      <td>${survey.Responses}</td>
-      <td>
-        <button>Edit</button>
-        <button>Delete</button>
-      </td>
-    `;
-    tableBody.appendChild(row);
-  });
-}
+  // Render pagination buttons
+  function renderPagination() {
+    const paginationContainer = document.getElementById("pagination");
+    if (!paginationContainer) return;
 
+    paginationContainer.innerHTML = "";
+    const totalPages = Math.ceil(filteredSurveys.length / rowsPerPage);
 
+    if (totalPages <= 1) return;
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.className = (i === currentPage) ? "active" : "";
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        renderSurveys();
+        renderPagination();
+      });
+      paginationContainer.appendChild(btn);
+    }
+  }
+});
