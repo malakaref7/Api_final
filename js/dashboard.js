@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoutDiv) {
     logoutDiv.addEventListener("click", () => {
       localStorage.removeItem("username");
-      window.location.href = "login.html";
+      window.location.href = "index.html";
     });
   }
 });
@@ -77,4 +77,5 @@ function renderSurveys(surveys) {
     tableBody.appendChild(row);
   });
 }
+
 
