@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Survey System</title>
+  <link rel="stylesheet" href="css/loginstyle.css"/>
+</head>
+<body>
+
+  <!-- Logo outside container -->
+  <img src="images/logo.png" alt="HiveCFM Logo" class="logo">
+
+  <div class="container">
+    <!-- Header -->
+    <header class="left-panel">
+      <div class="left-content">
+        <img src="images/bg.jpg" alt="Analytics Illustration" class="illustration"/>
+        <h2>Observe, measure & analyze</h2>
+        <p>
+          Deliver accurate CX insights to all levels and positions. Discover growth opportunities. Collaborate to identify root causes of bad customer experience.
+        </p>
+      </div>
+    </header>
+
+    <!-- Main content -->
+    <main class="right-panel">
+      <div class="login-box">
+        <h2>LOGIN</h2>
+        <p>Please login with username & password to enter the portal</p>
+
+        <form id="loginForm">
+          <label for="username"class="input-title">Username</label>
+          <input type="text" id="username" required />
+
+          <label for="password"class="input-title">Password</label>
+          <div style="position:relative;">
+            <input type="password" id="password" required />
+            <span id="togglePass">Show</span>
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox" /> Remember my Username & Password</label>
+          </div>
+          <button type="submit">Enter</button>
+          <p id="error" class="error-message"></p>
+          <div class="register-link">
+            Don't have an Account? <a href="register.html">Create a new Account</a>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <p>All copyrights has been reserved IST Networks @ 2022</p>
+  </footer>
+  <script src="js/login.js"></script>
+</body>
+</html>
