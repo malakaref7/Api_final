@@ -10,18 +10,6 @@ sbody, html {
   height: 100vh;
 }
 
-footer {
-  position: fixed;
-  left: 350px;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  color: #555;
-  font-size: 12px;
-  background: transparent;
-  padding: 10px 0;
-}
-
 /* Left side */
 .left-panel {
   flex: 45%;
@@ -72,7 +60,6 @@ footer {
   margin: 0;
   z-index: 100;
 }
-
 
 .login-box h2 {
   color: #0c69a2;
@@ -148,7 +135,6 @@ button:hover {
   font-size: 14px;
 }
 
-
 .register-link {
   text-align: center;
   margin-top: 5px;
@@ -165,4 +151,16 @@ button:hover {
 
 .register-link a:hover {
   color: rgb(243, 221, 166);
+}
+
+footer {
+  position: fixed;
+  left: 350px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: #555;
+  font-size: 12px;
+  background: transparent;
+  padding: 10px 0;
 }
