@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "<tr><td colspan='6'>Server error. Unable to load surveys.</td></tr>";
     });
 
-  // Tab click filter
+  // filter
   document.querySelectorAll(".tab").forEach(tab => {
     tab.addEventListener("click", () => {
       // Activate clicked tab
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       tab.classList.add("active");
 
       const filter = tab.textContent.trim();
-      currentPage = 1; // Reset to first page
+      currentPage = 1; // reset to first page
 
       if (filter === "All") {
         filteredSurveys = [...allSurveys];
@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <td>
           <div class="status-badge ${survey.Status.toLowerCase()}">${survey.Status}</div>
           <div class="status-dates">
-            Expires at ${survey.ExpiryDate ? survey.ExpiryDate : "N/A"}<br>
-            Publish at ${survey.PublishDate ? survey.PublishDate : "N/A"}
+            Expires at ${survey.ExpiryDate ? survey.ExpiryDate : "9/10/2025"}<br>
+            Publish at ${survey.PublishDate ? survey.PublishDate : "8/10/2025"}
           </div>
         </td>
         <td>${survey.CreatedByUserName}</td>
