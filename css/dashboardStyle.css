@@ -19,7 +19,6 @@ body {
   transform: scale(2.5);
   }
 
-
 .top-bar .right-actions {
   display: flex;
   align-items: center;
@@ -87,7 +86,6 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
- 
 }
 
 .sidebar ul li {
@@ -107,7 +105,7 @@ body {
 
 .sidebar ul li img {
   width: 24px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
   display: block;
 }
 
@@ -170,38 +168,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 20px;
-}
-
-/* Status Badge */
-.status-badge {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
-  margin-bottom: 4px;
-}
-
-/* Specific colors per status */
-.status-badge.scheduled {
-  background-color: #0c69a2; /* blue */
-}
-.status-badge.published {
-  background-color: #4caf50; /* green */
-}
-.status-badge.draft {
-  background-color: #ff9800; /* orange */
-}
-.status-badge.archived {
-  background-color: #9e9e9e; /* gray */
-}
-
-/* Dates below the badge */
-.status-dates {
-  font-size: 11px;
-  color: #666;
-  line-height: 1.3;
 }
 
 .tabs {
@@ -291,39 +257,59 @@ table th, table td {
 
 table td:last-child {
   vertical-align: middle;
-  padding: 0; /* optional, to remove extra space */
+  padding: 0;
 }
 
 table th {
   background: #f0f0f0;
 }
 
-/* FOOTER */
-footer {
-  text-align: center;
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
   font-size: 12px;
-  color: #555;
-  position: fixed;
-  bottom: 0;
-  left: 80px; /* to the right of the sidebar */
-  width: calc(100% - 80px);
-  background: #fff;
-  padding: 5px 0;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+/* Specific colors for each status */
+.status-badge.scheduled {
+  background-color: #0c69a2; 
+}
+.status-badge.published {
+  background-color: #4caf50; 
+}
+.status-badge.draft {
+  background-color: #ff9800; 
+}
+.status-badge.archived {
+  background-color: #9e9e9e; 
+}
+
+.status-dates {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.3;
 }
 
 .actions {
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   gap: 8px;
   height: 100%; 
-  width: 20%;
-  padding: 10px 0; /* keeps spacing inside */
+  width: 15%;
+  padding: 10px 0; 
   box-sizing: border-box;
 }
+
 .actions img {
   width: 18px;
   height: 18px;
+  margin-left: 2px; 
+  margin-right: 8px; 
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -359,4 +345,19 @@ footer {
 .pagination button:hover {
   background: #ccc;
 }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #fcfafa;
+  position: fixed;
+  bottom: 0;
+  left: 80px;
+  width: calc(100% - 80px);
+  background: #020e28;
+  padding: 2.5px 0;
+}
+
+
 
